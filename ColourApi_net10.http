@@ -1,0 +1,6 @@
+@ColourApi_net10_HostAddress = http://localhost:5014
+
+GET {{ColourApi_net10_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
