@@ -31,14 +31,10 @@ if (app.Environment.IsDevelopment())
 
 app.MapControllers();
 
-app.MapGet("/api/values", () =>
+app.MapGet("/api/values", (ColourContext context) =>
 {
     return new string[] { "value1", "value2" };
 });
 
-app.MapGet("/api/values/{id}", (int id) =>
-{
-    return "value";
-});
-
+PrepDB.PrepColours(app);
 app.Run();
