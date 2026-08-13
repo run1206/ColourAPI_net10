@@ -33,7 +33,7 @@ app.MapControllers();
 
 app.MapGet("/api/values", (ColourContext context) =>
 {
-    return new string[] { "value1", "value2" };
+    return context.ColourItems;
 });
 
 PrepDB.PrepColours(app);
