@@ -1,3 +1,6 @@
+using ColourAPI_net10.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -5,8 +8,17 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
-var app = builder.Build();
+var configuration = builder.Configuration;
+var server = configuration["DBServer"] ?? "localhost";
+var port = configuration["DBPort"] ?? "1433";
+var user = configuration["DBUser"] ?? "SA";
+var password = configuration["DBPassword"] ?? "Pa$$w0rd2026";
+var database = configuration["Database"] ?? "Colours";
 
+builder.Services.AddDbContext<ColourContext>(opt => 
+    opt.UseSqlServer($"Server={server},{port};Initial Catalog={database};User ID={user};Password={password}"));
+
+var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
