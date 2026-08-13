@@ -16,7 +16,7 @@ var password = configuration["DBPassword"] ?? "Pa$$w0rd2026";
 var database = configuration["Database"] ?? "Colours";
 
 builder.Services.AddDbContext<ColourContext>(opt => 
-    opt.UseSqlServer($"Server={server},{port};Initial Catalog={database};User ID={user};Password={password}"));
+    opt.UseSqlServer($"Server={server},{port};Initial Catalog={database};User ID={user};Password={password};Encrypt=False;TrustServerCertificate=True;"));
 
 var app = builder.Build();
 
@@ -33,7 +33,7 @@ app.MapControllers();
 
 app.MapGet("/api/values", (ColourContext context) =>
 {
-    return context.ColourItems;
+    return Results.Ok(context.ColourItems.ToList());
 });
 
 PrepDB.PrepColours(app);
