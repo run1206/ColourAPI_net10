@@ -39,6 +39,8 @@ public static class PrepDB
                 new Colour() {ColourName = "Indigo"},
                 new Colour() {ColourName = "Violet"}
             );
+
+            context.SaveChanges();
         }
         else
             Console.WriteLine("Data already present, not seeding");
