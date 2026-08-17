@@ -9,7 +9,7 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 var configuration = builder.Configuration;
-var server = configuration["DBServer"] ?? "localhost";
+var server = configuration["DBServer"] ?? "ms-sql-server";
 var port = configuration["DBPort"] ?? "1433";
 var user = configuration["DBUser"] ?? "SA";
 var password = configuration["DBPassword"] ?? "Pa55w0rd2026";
