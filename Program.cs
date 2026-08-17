@@ -12,7 +12,7 @@ var configuration = builder.Configuration;
 var server = configuration["DBServer"] ?? "localhost";
 var port = configuration["DBPort"] ?? "1433";
 var user = configuration["DBUser"] ?? "SA";
-var password = configuration["DBPassword"] ?? "Pa$$w0rd2026";
+var password = configuration["DBPassword"] ?? "Pa55w0rd2026";
 var database = configuration["Database"] ?? "Colours";
 
 builder.Services.AddDbContext<ColourContext>(opt => 
